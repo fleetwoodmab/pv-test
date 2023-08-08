@@ -32,7 +32,7 @@
           </div>
           <div class="form-group" id="divLanguage">
             <label for="language" class="col-form-label">Language:</label>
-            <input type="text" class="form-control" name="language" id="language" readonly="readonly" />
+            <input type="text" class="form-control" name="language" id="language" disabled />
           </div>
           <div class="form-group" id="divPreviewValue">
             <label for="newValue" class="col-form-label">Current proposed value:</label>
@@ -111,7 +111,7 @@
 `);
 
             Editor.startLink = `<i class="fas fa-pen"></i>&nbsp;Edit`;
-            Editor.stopLink = `<i class="fas fa-check"></i>&nbsp;Stop editing`;
+            Editor.stopLink = `<i class="fas fa-check"></i>&nbsp;Confirm changes`;
 
             $("#editorLink").html(Editor.startLink);
 
@@ -204,7 +204,7 @@
                                 if (data.result != null) {
                                     let preview = data.result.NEW_VALUE.trim().replace(/^\s+|\s+$/g, "").replaceAll("\"", "\\\"").replaceAll("\'", "\\\'");
                                     newContent = newContent.replace("@@proposed", ",\"" + preview + "\"");
-                                    newContent += ("&nbsp;<a class='previewLink' href='javascript: Editor.previewAttribute(\"" + attr + "\",\"" + preview + "\", \"" + data.result.CREATED_USER + "\");'><small><font color='red'>proposed value</font></small></a> ");
+                                    newContent += ("&nbsp;<a class='previewLink' href='javascript: Editor.previewAttribute(\"" + attr + "\",\"" + preview + "\", \"" + data.result.CREATED_USER + "\");'><small><font color='red'>" + preview + "</font></small></a> ");
                                 }
                                 else
                                     newContent = newContent.replace("@@proposed", "");
