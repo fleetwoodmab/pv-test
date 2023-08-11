@@ -47,7 +47,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="Editor.saveAttribute();">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="Editor.saveAttribute(); sendEmail();">Save changes</button>
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@
 `);
 
             Editor.startLink = `<i class="fas fa-pen"></i>&nbsp;Edit`;
-            Editor.stopLink = `<i class="fas fa-check"></i>&nbsp;Confirm changes`;
+            Editor.stopLink = `<i class="fas fa-check"></i>&nbsp; Stop editing`;
 
             $("#editorLink").html(Editor.startLink);
 
@@ -372,9 +372,15 @@
         form.modal('toggle');
     },
 
-
+   /* sendEmail: function(user) {
+      
+    } */
+    
 };
 
 $(document).ready(function () {
     Editor.initialize();
 });
+
+
+

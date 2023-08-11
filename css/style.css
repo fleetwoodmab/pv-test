@@ -1,3 +1,22 @@
+body {
+    font-size: .9rem;
+}
+
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active {
+    background-color: #464E2E;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+a:hover {
+    color:#464E2E;
+    text-decoration: none;
+}
+
+.badge-info{
+    background-color: #ACB992;
+}
 
 #banner {
     background-color: rgba(222, 255, 51, 0.7);
@@ -16,8 +35,13 @@
     z-index: 999;
 }
 
+.progress-bar {
+    background-color: #362706;
+    color: white;
+}
+
 a {
-    color: #3498DB;
+    color: #ACB992;
 }
 
 .dropdown-item:hover {
@@ -188,5 +212,24 @@ ul.notation {
 }
 
 #searchCard {
-    background-color: #2b7640;
+    background-color: #E9E5D6;
 }
+
+#search_widget{
+    background-color: #ACB992;
+}
+
+
+/*bootstrap ovverriding*/
+/*to merge?*/
+btn-info:not(:disabled):not(.disabled).active,
+.btn-info:not(:disabled):not(.disabled):active,
+.show>.btn-info.dropdown-toggle, .btn-info:not(:disabled):not(.disabled).active:focus,
+.btn-info:not(:disabled):not(.disabled):active:focus,
+.show>.btn-info.dropdown-toggle:focus {
+    background-color: #464E2E;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+/*end*/
