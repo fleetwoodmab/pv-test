@@ -47,7 +47,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="Editor.saveAttribute(); sendEmail();">Save changes</button>
+        <button type="button" class="btn btn-primary" name="send_email" onclick="Editor.saveAttribute();">Save changes</button>
       </div>
     </div>
   </div>
@@ -313,6 +313,11 @@
         form.modal('toggle');
     },
 
+    hasSpecChars: function(str) {
+      const specChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      return specChars.test(str);
+    },
+
     /* call on attribute save button click - POST to ticket database */
     saveAttribute: function () {
         let form = $('#editorModal');
@@ -331,7 +336,7 @@
             return;
         }
 
-        var e = /[$?'*#\/\\^{}]+/.exec(newValue);
+        var e = /[$?'*#\/\\^{}<>]+/.exec(newValue);
         if (e != null) {
             var i = e.index;
             var elen = e[0].length;
@@ -363,6 +368,18 @@
                 $("#result", form).html(e.responseText);
             }
         });
+
+        $.ajax({
+          type: "POST",
+          url: "https://www.geolba.net/editor/ws/mail.php",
+          data: { send_email: true },
+          success: function (data) {
+              console.log(data); 
+          },
+          error: function (error) {
+              console.error('Error:', error);
+          }
+      });
     },
     previewAttribute: function (attr, value, user) {
         let form = $('#previewModal');
@@ -371,12 +388,10 @@
         $('#user', form).val(user);
         form.modal('toggle');
     },
-
-   /* sendEmail: function(user) {
-      
-    } */
     
 };
+
+
 
 $(document).ready(function () {
     Editor.initialize();

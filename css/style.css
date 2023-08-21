@@ -1,3 +1,7 @@
+/*To organise better */
+
+
+
 body {
     font-size: .9rem;
 }
@@ -220,7 +224,7 @@ ul.notation {
 }
 
 
-/*bootstrap ovverriding*/
+/*bootstrap overriding*/
 /*to merge?*/
 btn-info:not(:disabled):not(.disabled).active,
 .btn-info:not(:disabled):not(.disabled):active,

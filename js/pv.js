@@ -430,12 +430,15 @@ function details(divID, uri) { //build the web page content
                 // RDF download icon added to apps (notation div or altLabel div)
                 let r_links = jsonData.results.bindings.map(a => [a.p.value, '<' + a.o.value + '>']).filter(b => b[0] == REF_LINKS[0]).map(c => c[1]).join(' ');
 
+                /* <img
+                src="img/rdf_flyer.svg"
+                alt="rdf"
+                width="17" />*/
+
                 let r = `<a href="javascript:rdfTS('<${uri}> ${r_links}')" title="RDF download">
                             <span style="margin-right:7px;">
-                            <img
-                            src="img/rdf_flyer.svg"
-                            alt="rdf"
-                            width="17" />
+                            <i class="fas fa-cube"></i>
+                            
                             </span>
                         </a>
                         <a href="${ENDPOINT}?query=${encodeURIComponent(CONCEPTSLIST_QUERY.replace('§', uri))}&format=text/html" title="HTML list">
@@ -915,3 +918,4 @@ function provideAll(divID, uri, offset) { //provide all available concepts for n
 
 //***********************************************************************************************************
 //********************************END************************************************************************
+
